@@ -9,13 +9,12 @@ namespace operator_overloading.model
     public class CurrencyException:Exception
     {
         
-        public CurrencyException(string msg)
+        public CurrencyException(string msg):base(msg)
          {
-             Message = msg;
+             
          }
 
-
-        public string Message { get; set; }
+        
        }
     }
 

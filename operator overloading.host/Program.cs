@@ -11,29 +11,36 @@ namespace operator_overloading.host
     {
         static void Main(string[] args)
         {
-            Money x= new Money();
-            Money y=new Money();
-            Money z=new Money();
+            string tempCurrency="";
+            double tempAmount=0.0;
             try
             {
+                
                 Console.WriteLine("enter the type of currency and amount of currency ");
-                x.currency=Convert.ToString(Console.ReadLine());
-                x.amount=Convert.ToDouble(Console.ReadLine());
+                tempCurrency = Console.ReadLine();
+                double.TryParse(Console.ReadLine(), out tempAmount);
                 Console.WriteLine("enter the type of currency and amount of currency");
-                 y.currency=Convert.ToString(Console.ReadLine());
-                y.amount=Convert.ToDouble(Console.ReadLine());
+                tempCurrency = Convert.ToString(Console.ReadLine());
+                tempAmount = Convert.ToDouble(Console.ReadLine());
+                Money x = new Money(tempCurrency, tempAmount);
+                Money y = new Money(tempCurrency, tempAmount);
+                Money z = new Money(tempCurrency, tempAmount);
                 z = x + y;
-                Console.WriteLine("the total amount is: " + z.currency + " " + z.amount);
+                Console.WriteLine("the total amount is: " + z.Currency + " " + z.Amount);
             }
             catch (AmountException e1)
             {
-                Console.WriteLine("the exception is: {0}", e1.Message1);
+                Console.WriteLine("the exception is: {0}", e1.Message);
 
             }
 
             catch (CurrencyException e2)
             {
                 Console.WriteLine("the exception is: {0}", e2.Message);
+            }
+            catch (NullReferenceException e3)
+            {
+                Console.WriteLine("the exception is: {0}", e3.Message);
             }
             Console.ReadKey();
         }
