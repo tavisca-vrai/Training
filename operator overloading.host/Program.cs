@@ -22,11 +22,10 @@ namespace operator_overloading.host
                 Console.WriteLine("enter the type of currency and amount of currency");
                 tempCurrency = Convert.ToString(Console.ReadLine());
                 tempAmount = Convert.ToDouble(Console.ReadLine());
-                Money x = new Money(tempCurrency, tempAmount);
-                Money y = new Money(tempCurrency, tempAmount);
-                Money z = new Money(tempCurrency, tempAmount);
-                z = x + y;
-                Console.WriteLine("the total amount is: " + z.Currency + " " + z.Amount);
+                Money Input1 = new Money(tempCurrency, tempAmount);
+                Money Input2 = new Money(tempCurrency, tempAmount);
+                Money Output = Input1 + Input2;
+                Console.WriteLine("the total amount is: " + Output.Currency + " " + Output.Amount);
             }
             catch (AmountException e1)
             {

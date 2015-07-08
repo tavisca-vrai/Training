@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace operator_overloading.model
 {
+    [Serializable]
     public class CurrencyException:Exception
     {
         
@@ -14,7 +15,8 @@ namespace operator_overloading.model
              
          }
 
-        
+        protected CurrencyException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+        : base(info, context) { }
        }
     }
 

@@ -23,7 +23,7 @@ namespace operator_overloading.model
         {
             set
             {
-                if (string.IsNullOrWhiteSpace(currency))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new NullReferenceException(Messages.CurrencyNull);
                 }

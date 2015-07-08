@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace operator_overloading.model
 {
     [Serializable]
@@ -14,6 +15,8 @@ namespace operator_overloading.model
         {
            
         }
+        protected AmountException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+        : base(info, context) { }
 
         
     }
