@@ -11,7 +11,7 @@ namespace operator_overloading.model
     public class Money
     {
         private string _currency;
-        private double amount;
+        private double _amount;
         public Money(string moneyString)
         {
             string[] split = moneyString.Split(' ');
@@ -20,14 +20,14 @@ namespace operator_overloading.model
                 throw new System.Exception(Messages.InvalidFormat);
             }
 
-            double number;
-            if ((double.TryParse(split[0], out number) == false))
+            double money;
+            if ((double.TryParse(split[0], out money) == false))
             {
                 throw new System.Exception(Messages.InvalidFormat);
             }
             else
             {
-                Amount = number;
+                Amount = money;
                 Currency = split[1];
             }
         }
@@ -67,14 +67,14 @@ namespace operator_overloading.model
                 }
                 else
                 {
-                    amount = value;
+                    _amount = value;
                 }
 
                 
             }
             get
             {
-                return amount;
+                return _amount;
             }
         }
 
@@ -85,7 +85,7 @@ namespace operator_overloading.model
             if (inputOne._currency.Equals(inputTwo._currency, StringComparison.OrdinalIgnoreCase))
             {
                 tempCurrency = inputOne._currency.ToUpper();
-                tempAmount = inputOne.amount + inputTwo.amount;
+                tempAmount = inputOne._amount + inputTwo._amount;
                 if (double.IsPositiveInfinity(tempAmount) == false)
                 {
                     return (new Money(tempAmount,tempCurrency ));
