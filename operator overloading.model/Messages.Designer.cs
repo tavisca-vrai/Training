@@ -61,11 +61,11 @@ namespace operator_overloading.model {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to the entered amount exceeds its limits.
+        ///   Looks up a localized string similar to the entered amount invalid.
         /// </summary>
-        internal static string AmountExceed {
+        internal static string AmountInavlid {
             get {
-                return ResourceManager.GetString("AmountExceed", resourceCulture);
+                return ResourceManager.GetString("AmountInavlid", resourceCulture);
             }
         }
         

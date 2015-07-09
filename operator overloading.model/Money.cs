@@ -14,6 +14,10 @@ namespace operator_overloading.model
         private double _amount;
         public Money(string moneyString)
         {
+            if (string.IsNullOrWhiteSpace(moneyString))
+            {
+                throw new NullReferenceException(Messages.CurrencyNull);
+            }
             string[] split = moneyString.Split(' ');
             if (split.Length != 2)
             {
@@ -21,36 +25,35 @@ namespace operator_overloading.model
             }
 
             double money;
-            if ((double.TryParse(split[0], out money) == false))
+            
+            if (double.TryParse(split[0], out money) == false)
             {
-                throw new System.Exception(Messages.InvalidFormat);
+                throw new System.ArgumentException(Messages.AmountNull);
             }
-            else
-            {
+    
                 Amount = money;
+                if (string.IsNullOrWhiteSpace(split[1]))
+                {
+                    throw new NullReferenceException(Messages.CurrencyNull);
+                }
                 Currency = split[1];
-            }
         }
 
-        public Money(double amount1,string currency1)
+        public Money(double amount,string currency)
         {
 
-            Currency = currency1;
-            Amount = amount1;
+            Currency = currency;
+            Amount = amount;
         }
         public string Currency
         {
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value)||value.Length!=3)
                 {
                     throw new NullReferenceException(Messages.CurrencyNull);
                 }
-                else
-                {
-                    _currency = value;
-                }
-
+                _currency = value;
             }
             get
             {
@@ -61,16 +64,12 @@ namespace operator_overloading.model
         {
             set
             {
-                if (double.IsNaN((double)value)==true)
+                if (double.IsPositiveInfinity(value)||value==double.MaxValue||value<0)
                 {
-                    throw new System.NullReferenceException(Messages.AmountNull);
+                    throw new AmountException(Messages.AmountInavlid);
                 }
-                else
-                {
-                    _amount = value;
-                }
-
                 
+                    _amount = value;
             }
             get
             {
@@ -80,29 +79,13 @@ namespace operator_overloading.model
 
         public static Money operator +(Money inputOne, Money inputTwo)
         {
-            string tempCurrency;
-            double tempAmount;
-            if (inputOne._currency.Equals(inputTwo._currency, StringComparison.OrdinalIgnoreCase))
-            {
-                tempCurrency = inputOne._currency.ToUpper();
-                tempAmount = inputOne._amount + inputTwo._amount;
-                if (double.IsPositiveInfinity(tempAmount) == false)
-                {
-                    return (new Money(tempAmount,tempCurrency ));
-                }
-                else
-                {
-                    throw new AmountException(Messages.AmountExceed);
-                }
-
-
-            }
-            else
+            if (inputOne._currency.Equals(inputTwo._currency, StringComparison.OrdinalIgnoreCase)==false)
             {
                 throw new CurrencyException(Messages.CurrencyMismatch);
             }
-
-
+             return (new Money( inputOne._amount + inputTwo._amount, inputOne._currency));
+            }
+      
         }
 
     }

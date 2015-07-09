@@ -11,36 +11,20 @@ namespace operator_overloading.host
     {
         static void Main(string[] args)
         {
-            string tempCurrency = "";
-            double tempAmount = 0.0;
             try
             {
 
                 Console.WriteLine("enter the type of currency and amount of currency ");
-                double.TryParse(Console.ReadLine(), out tempAmount);
-                tempCurrency = Console.ReadLine();
+                Money input1 = new Money(Console.ReadLine());
                 Console.WriteLine("enter the type of currency and amount of currency");
-                double.TryParse(Console.ReadLine(), out tempAmount); 
-                tempCurrency = Convert.ToString(Console.ReadLine());
-                Money input1 = new Money(tempAmount,tempCurrency );
-                Money input2 = new Money(tempAmount,tempCurrency );
+                Money input2 = new Money(Console.ReadLine());
                 Money Output = input1 + input2;
-
                 Console.WriteLine("the total amount is: " + Output.Currency + " " + Output.Amount);
             }
-            catch (AmountException e1)
+            catch (Exception e)
             {
-                Console.WriteLine("the exception is: {0}", e1.Message);
+                Console.WriteLine("the exception is: {0}", e.Message);
 
-            }
-
-            catch (CurrencyException e2)
-            {
-                Console.WriteLine("the exception is: {0}", e2.Message);
-            }
-            catch (NullReferenceException e3)
-            {
-                Console.WriteLine("the exception is: {0}", e3.Message);
             }
             Console.ReadKey();
         }
