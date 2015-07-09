@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace operator_overloading.model
 {
-   public class AmountException:Exception
+    [Serializable]
+    public class AmountException : Exception
     {
-    
-        public AmountException(string msg1)
+
+        public AmountException(string msg1):base(msg1)
         {
-            Message1 = msg1;
+           
         }
-       
-        public string Message1{get;set;}
-       
+        protected AmountException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+        : base(info, context) { }
+
         
     }
 }
 
-    
