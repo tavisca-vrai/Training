@@ -7,13 +7,32 @@ using System.Threading.Tasks;
 
 namespace operator_overloading.model
 {
+    
     public class Money
     {
-        private string currency;
+        private string _currency;
         private double amount;
-        private string word;
+        public Money(string moneyString)
+        {
+            string[] split = moneyString.Split(' ');
+            if (split.Length != 2)
+            {
+                throw new System.Exception(Messages.InvalidFormat);
+            }
 
-        public Money(string currency1, double amount1)
+            double number;
+            if ((double.TryParse(split[0], out number) == false))
+            {
+                throw new System.Exception(Messages.InvalidFormat);
+            }
+            else
+            {
+                Amount = number;
+                Currency = split[1];
+            }
+        }
+
+        public Money(double amount1,string currency1)
         {
 
             Currency = currency1;
@@ -29,20 +48,29 @@ namespace operator_overloading.model
                 }
                 else
                 {
-                    currency = value;
+                    _currency = value;
                 }
 
             }
             get
             {
-                return currency;
+                return _currency;
             }
         }
         public double Amount
         {
             set
             {
-                amount = value;
+                if (double.IsNaN((double)value)==true)
+                {
+                    throw new System.NullReferenceException(Messages.AmountNull);
+                }
+                else
+                {
+                    amount = value;
+                }
+
+                
             }
             get
             {
@@ -50,28 +78,28 @@ namespace operator_overloading.model
             }
         }
 
-        public static Money operator +(Money a, Money b)
+        public static Money operator +(Money inputOne, Money inputTwo)
         {
-            string tempC;
-            double tempA;
-            if (a.currency.Equals(b.currency, StringComparison.OrdinalIgnoreCase))
+            string tempCurrency;
+            double tempAmount;
+            if (inputOne._currency.Equals(inputTwo._currency, StringComparison.OrdinalIgnoreCase))
             {
-                tempC = a.currency.ToUpper();
-                tempA = a.amount + b.amount;
-                if (double.IsPositiveInfinity(tempA) == false)
+                tempCurrency = inputOne._currency.ToUpper();
+                tempAmount = inputOne.amount + inputTwo.amount;
+                if (double.IsPositiveInfinity(tempAmount) == false)
                 {
-                    return (new Money(tempC, tempA));
+                    return (new Money(tempAmount,tempCurrency ));
                 }
                 else
                 {
-                    throw new AmountException(Messages.amountexceed);
+                    throw new AmountException(Messages.AmountExceed);
                 }
 
 
             }
             else
             {
-                throw new CurrencyException(Messages.currencymismatch);
+                throw new CurrencyException(Messages.CurrencyMismatch);
             }
 
 

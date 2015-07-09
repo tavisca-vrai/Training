@@ -63,18 +63,27 @@ namespace operator_overloading.model {
         /// <summary>
         ///   Looks up a localized string similar to the entered amount exceeds its limits.
         /// </summary>
-        internal static string amountexceed {
+        internal static string AmountExceed {
             get {
-                return ResourceManager.GetString("amountexceed", resourceCulture);
+                return ResourceManager.GetString("AmountExceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no amount is entered please enter an amount.
+        /// </summary>
+        internal static string AmountNull {
+            get {
+                return ResourceManager.GetString("AmountNull", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Currency mismatch.
         /// </summary>
-        internal static string currencymismatch {
+        internal static string CurrencyMismatch {
             get {
-                return ResourceManager.GetString("currencymismatch", resourceCulture);
+                return ResourceManager.GetString("CurrencyMismatch", resourceCulture);
             }
         }
         
@@ -84,6 +93,15 @@ namespace operator_overloading.model {
         internal static string CurrencyNull {
             get {
                 return ResourceManager.GetString("CurrencyNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to please enter a valid input.
+        /// </summary>
+        internal static string InvalidFormat {
+            get {
+                return ResourceManager.GetString("InvalidFormat", resourceCulture);
             }
         }
     }

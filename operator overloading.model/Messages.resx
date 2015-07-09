@@ -117,13 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="amountexceed" xml:space="preserve">
+  <data name="AmountExceed" xml:space="preserve">
     <value>the entered amount exceeds its limits</value>
   </data>
-  <data name="currencymismatch" xml:space="preserve">
+  <data name="CurrencyMismatch" xml:space="preserve">
     <value>Currency mismatch</value>
   </data>
   <data name="CurrencyNull" xml:space="preserve">
     <value>no input is given please enter the type of currency</value>
+  </data>
+  <data name="AmountNull" xml:space="preserve">
+    <value>no amount is entered please enter an amount</value>
+  </data>
+  <data name="InvalidFormat" xml:space="preserve">
+    <value>please enter a valid input</value>
   </data>
 </root>
