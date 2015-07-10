@@ -1,0 +1,5 @@
+D:\Training\OperatorOverloading.Parser\obj\Debug\OperatorOverloading.Parser.csprojResolveAssemblyReference.cache
+D:\Training\OperatorOverloading.Parser\bin\Debug\OperatorOverloading.Parser.dll
+D:\Training\OperatorOverloading.Parser\bin\Debug\OperatorOverloading.Parser.pdb
+D:\Training\OperatorOverloading.Parser\obj\Debug\OperatorOverloading.Parser.dll
+D:\Training\OperatorOverloading.Parser\obj\Debug\OperatorOverloading.Parser.pdb

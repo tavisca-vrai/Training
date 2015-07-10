@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "operator overloading.host",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "operator overloading.model", "operator overloading.model\operator overloading.model.csproj", "{2DBFBB78-3FC7-4F1E-8690-6AA430D50DA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.DBL", "OperatorOverloading.DBL\OperatorOverloading.DBL.csproj", "{A931ECCD-9512-4F47-AC3B-8895636C4C22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Parser", "OperatorOverloading.Parser\OperatorOverloading.Parser.csproj", "{778E369E-67CA-4C65-AF23-FFC02CC5E5B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2DBFBB78-3FC7-4F1E-8690-6AA430D50DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DBFBB78-3FC7-4F1E-8690-6AA430D50DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DBFBB78-3FC7-4F1E-8690-6AA430D50DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A931ECCD-9512-4F47-AC3B-8895636C4C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A931ECCD-9512-4F47-AC3B-8895636C4C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A931ECCD-9512-4F47-AC3B-8895636C4C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A931ECCD-9512-4F47-AC3B-8895636C4C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{778E369E-67CA-4C65-AF23-FFC02CC5E5B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{778E369E-67CA-4C65-AF23-FFC02CC5E5B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{778E369E-67CA-4C65-AF23-FFC02CC5E5B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{778E369E-67CA-4C65-AF23-FFC02CC5E5B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
