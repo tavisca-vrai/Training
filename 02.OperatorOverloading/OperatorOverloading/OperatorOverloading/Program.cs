@@ -14,21 +14,15 @@ namespace OperatorOverloading
         {
             try
             {
-                Console.WriteLine("enter the source currency");
-                string sourceCurrency = Console.ReadLine();
-                sourceCurrency = sourceCurrency.ToUpper();
-                double amount, money;
-                while (double.TryParse(Console.ReadLine(), out amount) == false)
-                {
-                    Console.WriteLine("Please enter proper amount for source money object:");
-                }
+                Console.WriteLine("enter the type of currency and amount of currency ");
+                Money input1 = new Money(Console.ReadLine());
                 Console.WriteLine("enter the Target currency");
                 string targetCurrency = Console.ReadLine();
                 targetCurrency = targetCurrency.ToUpper();
-                Money input = new Money();
-                double ans = input.ConvertCurrency(sourceCurrency, targetCurrency, amount, out money);
-                Console.WriteLine("the rate is: {0}", ans);
-                Console.WriteLine("the converted amount is: {0}", money);
+                var ans = input1.ConvertCurrency(targetCurrency);
+                //Money ans = new Money(string);
+                //ans.ConvertCurrency(targetCurrency);
+                Console.WriteLine("the converted amount is: {0}", ans);
                 /*Console.WriteLine("enter the type of currency and amount of currency ");
                 Money input1 = new Money(Console.ReadLine());
                 Console.WriteLine("enter the type of currency and amount of currency");

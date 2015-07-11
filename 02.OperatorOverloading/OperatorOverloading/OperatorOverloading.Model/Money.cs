@@ -12,7 +12,6 @@ namespace OperatorOverloading.Model
     {
         private string _currency;
         private double _amount;
-        public Money() { }
         public Money(string moneyString)
         {
             if (string.IsNullOrWhiteSpace(moneyString))
@@ -38,6 +37,7 @@ namespace OperatorOverloading.Model
                 throw new NullReferenceException(Messages.CurrencyNull);
             }
             Currency = split[1];
+            Currency = Currency.ToUpper();
         }
 
         public Money(double amount, string currency)
@@ -77,27 +77,22 @@ namespace OperatorOverloading.Model
                 return _amount;
             }
         }
-        public double ConvertCurrency(string source, string target, double amount, out double money)
+        public Money ConvertCurrency(string target)
         {
-            if (string.IsNullOrWhiteSpace(source) || string.IsNullOrWhiteSpace(target))
-            {
-                throw new NullReferenceException(Messages.CurrencyNull);
-            }
-            else if (Regex.IsMatch(source, @"^[a-zA-Z]+$") == false)
-            {
-                throw new Exception(Messages.SourceCurrency);
-            }
-            else if (Regex.IsMatch(target, @"^[a-zA-Z]+$") == false)
+             if (Regex.IsMatch(target, @"^[a-zA-Z]+$") == false)
             {
                 throw new Exception(Messages.TargetCurrency);
             }
 
-            Converter convertedCurrency = new Converter();
-            double rate = convertedCurrency.GetConversionRate(source, target);
-            money = amount * rate;
-            return rate;
+             CurrencyConverter convertedCurrency = new CurrencyConverter();
+            double rate = convertedCurrency.GetConversionRate(this.Currency, target);
+            var totalMoney = this.Amount * rate;
+            return new Money(totalMoney, target);
         }
-
+        public override string ToString()
+        {
+            return Amount+" "+Currency;
+        }
         public static Money operator +(Money inputOne, Money inputTwo)
         {
             if (inputOne._currency.Equals(inputTwo._currency, StringComparison.OrdinalIgnoreCase) == false)

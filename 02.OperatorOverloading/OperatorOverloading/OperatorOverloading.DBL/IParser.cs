@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OperatorOverloading.DBL
 {
-    interface IParser
+    interface ICurrencyConverter
     {
-        double GetConversionRate(string intialCurrency1, string finalCurrency);
+        double GetConversionRate(String initialCurrency, string finalCurrency);
     }
 }
