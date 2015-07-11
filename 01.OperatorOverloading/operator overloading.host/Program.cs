@@ -34,7 +34,7 @@ namespace operator_overloading.host
                 Money input1 = new Money(Console.ReadLine());
                 Console.WriteLine("enter the type of currency and amount of currency");
                 Money input2 = new Money(Console.ReadLine());
-                Money Output = input1 + input2;
+                Money output = input1 + input2;
                 Console.WriteLine("the total amount is: " + Output.Currency + " " + Output.Amount);*/
                 
             }

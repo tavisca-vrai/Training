@@ -10,3 +10,6 @@ D:\Training\operator overloading.host\bin\Debug\OperatorOverloading.DBL.dll
 D:\Training\operator overloading.host\bin\Debug\OperatorOverloading.Parser.dll
 D:\Training\operator overloading.host\bin\Debug\OperatorOverloading.DBL.pdb
 D:\Training\operator overloading.host\bin\Debug\OperatorOverloading.Parser.pdb
+D:\Training\01.OperatorOverloading\operator overloading.host\bin\Debug\operator overloading.host.exe.config
+D:\Training\01.OperatorOverloading\operator overloading.host\obj\Debug\operator overloading.host.exe
+D:\Training\01.OperatorOverloading\operator overloading.host\obj\Debug\operator overloading.host.pdb

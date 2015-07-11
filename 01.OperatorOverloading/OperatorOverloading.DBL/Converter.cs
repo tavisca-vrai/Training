@@ -30,11 +30,7 @@ namespace OperatorOverloading.DBL
                if (finalString[i].Contains(final))
                {
                    string[] tempString = finalString[i].Split(':');
-
-                   if (tempString[1].Contains('\0'))
-                   {
-                       tempString[1] = tempString[1].Remove(tempString[1].Length - 2, 2);
-                   }
+                   tempString[1] = tempString[1].Remove(tempString[1].Length - 2, 2);
                    if (double.TryParse(tempString[1], out fetchedRate) == false)
                        throw new Exception("could not fetch the exchange rate");
                    return fetchedRate;
