@@ -1,0 +1,11 @@
+D:\Training\operator overloading.model\obj\Debug\operator overloading.model.csprojResolveAssemblyReference.cache
+D:\Training\operator overloading.model\bin\Debug\operator overloading.model.dll
+D:\Training\operator overloading.model\bin\Debug\operator overloading.model.pdb
+D:\Training\operator overloading.model\obj\Debug\operator overloading.model.dll
+D:\Training\operator overloading.model\obj\Debug\operator overloading.model.pdb
+D:\Training\operator overloading.model\obj\Debug\operator_overloading.model.Messages.resources
+D:\Training\operator overloading.model\obj\Debug\operator overloading.model.csproj.GenerateResource.Cache
+D:\Training\operator overloading.model\bin\Debug\OperatorOverloading.DBL.dll
+D:\Training\operator overloading.model\bin\Debug\OperatorOverloading.Parser.dll
+D:\Training\operator overloading.model\bin\Debug\OperatorOverloading.DBL.pdb
+D:\Training\operator overloading.model\bin\Debug\OperatorOverloading.Parser.pdb
