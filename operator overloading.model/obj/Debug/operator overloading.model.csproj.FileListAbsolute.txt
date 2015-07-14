@@ -1,5 +1,0 @@
-D:\Training\operator overloading.model\obj\Debug\operator overloading.model.csprojResolveAssemblyReference.cache
-D:\Training\operator overloading.model\bin\Debug\operator overloading.model.dll
-D:\Training\operator overloading.model\bin\Debug\operator overloading.model.pdb
-D:\Training\operator overloading.model\obj\Debug\operator overloading.model.dll
-D:\Training\operator overloading.model\obj\Debug\operator overloading.model.pdb
