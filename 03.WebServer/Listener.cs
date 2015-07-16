@@ -10,57 +10,28 @@ namespace WebServer
 {
     class Listener
     {
-        // check for already running
-        private bool _running = false;
-        private int _timeout = 5;
-        private Socket _serverSocket;
-        TcpListener tcp = new TcpListener(IPAddress.Any, 8080);
+        private TcpListener _tcpListener;
 
-
-        // Directory to host our contents
-        private string _contentPath;
-        private void InitializeSocket(int port, string contentPath) //create socket
+        public Listener(string host, int port)
         {
-            _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _serverSocket.Bind(new IPEndPoint(IPAddress.Any, port));
-            _serverSocket.Listen(100);    //no of request in queue
-            _serverSocket.ReceiveTimeout = _timeout;
-            _serverSocket.SendTimeout = _timeout;
-            _running = true; //socket created
-            _contentPath = contentPath;
+            this._tcpListener = new TcpListener(IPAddress.Parse(host), port);
         }
-        public void Start(int port, string contentPath)
-        {
-            try
-            {
-                InitializeSocket(port, contentPath);
-            }
-            catch
-            {
-                throw new System.Exception(Messages.SocketCreatingError);
 
-            }
-            while (_running)
+        public void Listen()
+        {
+            this._tcpListener.Start();
+            while (true)
             {
-                {
-                    var dispatcher = new Dispatcher(_serverSocket, contentPath);
-                    dispatcher.AcceptRequest();
-                }
+                var socket = this._tcpListener.AcceptSocket();
+                if (socket.Connected == false) continue;
+
+                new Queue().Enqueue(socket);
             }
         }
+
         public void Stop()
         {
-            _running = false;
-            try
-            {
-                _serverSocket.Close();
-            }
-            catch
-            {
-                throw new System.Exception(Messages.SocketClosingError);
-
-            }
-            _serverSocket = null;
+            this._tcpListener.Stop();
         }
     }
 }

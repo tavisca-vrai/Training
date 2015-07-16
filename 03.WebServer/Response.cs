@@ -10,14 +10,14 @@ using System.Configuration;
 using System.IO;
 namespace WebServer
 {
-    class CreateResponse
+    class Response
     {
         RegistryKey registryKey = Registry.ClassesRoot;
         public Socket ClientSocket = null;
         private string _contentPath;
         public FileHandler FileHandler;
 
-        public CreateResponse(Socket clientSocket, string contentPath)
+        public Response(Socket clientSocket, string contentPath)
         {
             _contentPath = contentPath;
             ClientSocket = clientSocket;

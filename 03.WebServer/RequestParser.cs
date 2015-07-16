@@ -18,6 +18,7 @@ namespace WebServer
         {
             try
             {
+                Console.WriteLine(requestString);
                 string[] tokens = requestString.Split(' ');
 
                 tokens[1] = tokens[1].Replace("/", "\\");

@@ -6,85 +6,70 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using System.Threading;
+using System.Configuration;
 
 namespace WebServer
 {
     class Dispatcher
     {
-        private Socket _mainSocket;
-        private int _timeout;
-        private string _contentPath;
-        public Dispatcher(Socket serverSocket, String contentPath)
+        private Socket _clientSocket = null;
+        private bool _isRunning = true;
+        internal void Start()
         {
-            _mainSocket = serverSocket;
-            _timeout = 5;
-            _contentPath = contentPath;
-        }
-
-        public void AcceptRequest()
-        {
-            Socket clientSocket = null;
-            try
+            while (this._isRunning)
             {
-                // Create new thread to handle the request and continue to listen the socket.
-                clientSocket = _mainSocket.Accept();
-
-                var requestHandler = new Thread(() =>
+                Socket socket;
+                if (Application.RequestQueue.TryDequeue(out socket) == false)
+                    continue;
+                Task.Run(() =>
                 {
-                    clientSocket.ReceiveTimeout = _timeout;
-                    clientSocket.SendTimeout = _timeout;
-                    HandleTheRequest(clientSocket);
+                    this.Dispatch(socket);
                 });
-                requestHandler.Start();
-            }
-            catch
-            {
-                if (clientSocket != null)
-                    clientSocket.Close();
-                throw new System.Exception(Messages.ClientError);
-
             }
         }
-
-        private void HandleTheRequest(Socket clientSocket)
+        public void Dispatch(Socket clientSocket)
         {
+            this._clientSocket = clientSocket;
             var requestParser = new RequestParser();
-
-            string requestString = DecodeRequest(clientSocket);
-            Console.WriteLine(requestString);
+            var requestString = DecodeRequest(_clientSocket);
             requestParser.Parser(requestString);
 
-            if (requestParser.HttpMethod.Equals("get", StringComparison.InvariantCultureIgnoreCase))
+            Console.WriteLine(requestParser.HttpUrl);
+
+            if (requestParser.HttpMethod != null && requestParser.HttpMethod.Equals("GET"))
             {
-                var createResponse = new CreateResponse(clientSocket, _contentPath);
-                createResponse.RequestUrl(requestParser.HttpUrl);
+
+                var response = new Response(_clientSocket, ConfigurationManager.AppSettings["Path"]);
+                response.RequestUrl(requestParser.HttpUrl);
             }
             else
             {
-                throw new System.Exception(Messages.UnimplementedMethod);
+                new Queue().Enqueue(_clientSocket);
+
             }
-            StopClientSocket(clientSocket);
         }
 
-        public void StopClientSocket(Socket clientSocket)
+        internal void Stop()
         {
-            if (clientSocket != null)
-                clientSocket.Close();
+            this._isRunning = false;
         }
 
         private string DecodeRequest(Socket clientSocket)
         {
+            Encoding _charEncoder = Encoding.UTF8;
             var receivedBufferlen = 0;
-            var buffer = new byte[1024000];
+            var buffer = new byte[1024];
             try
             {
                 receivedBufferlen = clientSocket.Receive(buffer);
             }
             catch (Exception)
             {
-                Console.ReadLine();
+
+                Thread.Yield();
+
             }
-            return Encoding.UTF8.GetString(buffer, 0, receivedBufferlen);
+            return _charEncoder.GetString(buffer, 0, receivedBufferlen);
         }
     }
 }

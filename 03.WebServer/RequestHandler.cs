@@ -56,12 +56,12 @@ namespace WebServer
 
             if (requestParser.HttpMethod.Equals("get", StringComparison.InvariantCultureIgnoreCase))
             {
-                var createResponse = new CreateResponse(clientSocket, _contentPath);
+                var createResponse = new Response(clientSocket, _contentPath);
                 createResponse.RequestUrl(requestParser.HttpUrl);
             }
             else
             {
-                Console.WriteLine("unemplimented mothode");
+                Console.WriteLine("unimplemented method");
                 Console.ReadLine();
             }
             StopClientSocket(clientSocket);
@@ -83,7 +83,7 @@ namespace WebServer
             }
             catch (Exception)
             {
-                //Console.WriteLine("buffer full");
+                Console.WriteLine("buffer full");
                 Console.ReadLine();
             }
             return _charEncoder.GetString(buffer, 0, receivedBufferlen);
