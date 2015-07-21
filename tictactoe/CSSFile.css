@@ -1,6 +1,15 @@
-﻿.buttons
-{
-height:50px;
-width:50px;
+﻿.parentbox{
+
+	text-align:center;
+	width:auto;
+	height:auto;
+	
 }
+body{
+
+	text-align:center;
+	
+}
+
+
 

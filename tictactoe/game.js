@@ -1,50 +1,85 @@
-﻿var flag = true;
-var win =
-[
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
-    [1, 5, 9],
-    [3, 5, 7]
-];
+﻿var painted;
+var content;
+var winningCombinations;
+var turn = 0;
+var currentBox;
+var c;
+var context;
+var squaresFilled = 0;
+var w;
+var y;
 
-function play(buttonId) {
-    if (flag) {
-        document.getElementById(buttonId).value = "X";
-        document.getElementById(buttonId).disabled = 'disabled';
-        winner();
-        flag = false;
+
+window.onload = function () {
+
+    painted = new Array();
+    content = new Array();
+    winningCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+
+    for (var l = 0; l <= 8; l++) {
+        painted[l] = false;
+        content[l] = '';
+    }
+}
+
+//Game methods
+function boxClicked(boxNumber) {
+    currentBox = "box" + boxNumber;
+    c = document.getElementById(currentBox);
+    context = c.getContext("2d");
+
+    if (painted[boxNumber - 1] == false) {
+        if (turn % 2 == 0) {
+            context.beginPath();
+            context.moveTo(10, 10);
+            context.lineTo(40, 40);
+            context.moveTo(40, 10);
+            context.lineTo(10, 40);
+            context.stroke();
+            context.closePath();
+            content[boxNumber - 1] = 'X';
+        }
+
+        else {
+            context.beginPath();
+            context.arc(25, 25, 20, 0, Math.PI * 2, true);
+            context.stroke();
+            context.closePath();
+            content[boxNumber - 1] = 'O';
+        }
+
+        turn++;
+        painted[boxNumber - 1] = true;
+        squaresFilled++;
+        checkForWinners(content[boxNumber - 1]);
+
+        if (squaresFilled == 9) {
+            alert("DRAW!");
+            location.reload(true);
+        }
+
     }
     else {
-        document.getElementById(buttonId).value = "O";
-        document.getElementById(buttonId).disabled = 'disabled';
-        winner();
-        flag = true;
+        alert("BOX ALREADY OCCUPIED ");
     }
 
 }
+function checkForWinners(symbol) {
 
-function winner() {
-    for (var index = 0; index < win.length; index++) {
-        for (var player = 0; player < 2; player++) {
-            if (player === 0)
-                var label = 'X';
-            else
-                var label = 'O';
-            combination = win[index];
-            if (document.getElementById(combination[0]).value == label &&
-                    document.getElementById(combination[1]).value == label &&
-                    document.getElementById(combination[2]).value == label) {
-                document.getElementById("Winner").innerHTML = 'Player ' + label + ' Won!';
-            }
+    for (var i = 0; i < winningCombinations.length; i++) {
+        if (content[winningCombinations[i][0]] == symbol && content[winningCombinations[i][1]] == symbol && content[winningCombinations[i][2]] == symbol) {
+            alert(symbol + " WON!");
+            restartGame();
         }
     }
+
 }
-function reset() {
-    location.reload();
+function restartGame() {
+    y = confirm("PLAY AGAIN?");
+    if (y == true) {
+        location.reload(true);
+    }
+
 }
 
 
