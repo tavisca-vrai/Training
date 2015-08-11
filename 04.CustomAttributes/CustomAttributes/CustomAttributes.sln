@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAttributes.Host", "CustomAttributes\CustomAttributes.Host.csproj", "{3D75AA30-0388-42F6-A7EB-74DB7AC07941}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAttributes.Model", "CustomAttributes.Model\CustomAttributes.Model.csproj", "{5F52A426-65DC-4AF6-B8CD-620FC771EE92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attributes", "Attributes\Attributes.csproj", "{5EA17EE8-4E10-4C27-93D9-DA8C6F60FB30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D75AA30-0388-42F6-A7EB-74DB7AC07941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D75AA30-0388-42F6-A7EB-74DB7AC07941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D75AA30-0388-42F6-A7EB-74DB7AC07941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D75AA30-0388-42F6-A7EB-74DB7AC07941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F52A426-65DC-4AF6-B8CD-620FC771EE92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F52A426-65DC-4AF6-B8CD-620FC771EE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F52A426-65DC-4AF6-B8CD-620FC771EE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F52A426-65DC-4AF6-B8CD-620FC771EE92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA17EE8-4E10-4C27-93D9-DA8C6F60FB30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA17EE8-4E10-4C27-93D9-DA8C6F60FB30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA17EE8-4E10-4C27-93D9-DA8C6F60FB30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA17EE8-4E10-4C27-93D9-DA8C6F60FB30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
